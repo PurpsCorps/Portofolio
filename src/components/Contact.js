@@ -77,13 +77,13 @@ const Contact = () => {
             </div>
 
             <div className="social-links">
-              <a href="#" className="social-link">
+              <a href="https://github.com/PurpsCorps" className="social-link">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="#" className="social-link">
+              <a href="https://www.linkedin.com/in/m-fahri-ramadhan-088827261" className="social-link">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="#" className="social-link">
+              <a href="https://x.com/pahriirm" className="social-link">
                 <i className="fab fa-twitter"></i>
               </a>
               <a href="https://instagram.com/_fahrirm" className="social-link">

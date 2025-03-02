@@ -45,8 +45,8 @@ const Projects = () => {
       description: 'A responsive portfolio website showcasing my projects and skills.',
       technologies: ['React', 'CSS3', 'Framer Motion'],
       imageUrl: 'images/project/porto.png',
-      githubLink: '#',
-      liveLink: '#'
+      githubLink: 'https://github.com/PurpsCorps/Portofolio',
+      liveLink: 'https://fahriramadhan.vercel.app/'
     }
   ];
 
