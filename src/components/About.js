@@ -24,7 +24,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="about-img-container">
-              <img src='images/foto2.png' alt='error' className="about-img"></img>
+              <img src='images/foto2.jpg' alt='error' className="about-img"></img>
             </div>
           </motion.div>
 
