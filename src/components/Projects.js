@@ -5,6 +5,15 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'E-commerce Platform (Web Hosting Selling)',
+      description: 'A full-stack e-commerce platform with client panel, payment processing, user authentication, and admin dashboard.',
+      technologies: ['React', 'Laravel', 'Tailwind', 'MySQL', 'Filament'],
+      imageUrl: 'images/project/vector.png',
+      githubLink: '#',
+      liveLink: 'https://vector-hosting.com/'
+    },
+    {
+      id: 2,
       title: 'E-commerce Platform (Game TopUp)',
       description: 'A full-stack e-commerce platform with payment processing, user authentication, and admin dashboard.',
       technologies: ['React', 'Laravel', 'MySQL', 'Filament'],
@@ -13,7 +22,7 @@ const Projects = () => {
       liveLink: 'https://purpstopup.ddns.net/#'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Study Class Website',
       description: 'A website show lecture schedule & task deadline table also about the class.',
       technologies: ['JavaScript', 'HTML5', 'CSS3'],
@@ -22,7 +31,7 @@ const Projects = () => {
       liveLink: 'http://sibilb24.ddns.net/'
     },
     {
-      id: 3,
+      id: 4,
       title: 'E-commerce Windows Application',
       description: 'A windows apps e-commerce platform with payment processing, user authentication, and admin dashboard.',
       technologies: ['C#', 'MySQL'],
@@ -31,7 +40,7 @@ const Projects = () => {
       liveLink: '#'
     },
     {
-      id: 4,
+      id: 5,
       title: 'FiveM (GTA V) Roleplay Server',
       description: 'A server in GTA V game modifier called FiveM, Roleplay Genre.',
       technologies: ['Lua', 'JavaScript', 'HTML5', 'CSS3', 'MySQL'],
@@ -40,7 +49,7 @@ const Projects = () => {
       liveLink: '#'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Portfolio Website',
       description: 'A responsive portfolio website showcasing my projects and skills.',
       technologies: ['React', 'CSS3', 'Framer Motion'],
