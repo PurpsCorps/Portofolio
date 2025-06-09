@@ -31,7 +31,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="profile-image-container">
-            <img src='images/foto.png' alt='error' className="profile-image"></img>
+            <img src='images/fotobaru.webp' alt='error' className="profile-image"></img>
           </div>
         </motion.div>
       </div>

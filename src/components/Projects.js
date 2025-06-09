@@ -5,6 +5,15 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'HiLo Sarcopenia Ticket Selling',
+      description: 'A full-stack selling ticket platform with client panel, ticket barcode scanner, user authentication, and admin dashboard.',
+      technologies: ['Laravel', 'Tailwind', 'MySQL', 'Filament'],
+      imageUrl: 'images/project/hilo.png',
+      githubLink: '#',
+      liveLink: 'https://hilo-sarcopenia.my.id/'
+    },
+    {
+      id: 2,
       title: 'E-commerce Platform (Web Hosting Selling)',
       description: 'A full-stack e-commerce platform with client panel, payment processing, user authentication, and admin dashboard.',
       technologies: ['React', 'Laravel', 'Tailwind', 'MySQL', 'Filament'],
@@ -13,7 +22,7 @@ const Projects = () => {
       liveLink: 'https://vector-hosting.com/'
     },
     {
-      id: 2,
+      id: 3,
       title: 'E-commerce Platform (Game TopUp)',
       description: 'A full-stack e-commerce platform with payment processing, user authentication, and admin dashboard.',
       technologies: ['React', 'Laravel', 'MySQL', 'Filament'],
@@ -22,7 +31,7 @@ const Projects = () => {
       liveLink: 'https://purpstopup.ddns.net/#'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Study Class Website',
       description: 'A website show lecture schedule & task deadline table also about the class.',
       technologies: ['JavaScript', 'HTML5', 'CSS3'],
@@ -31,7 +40,7 @@ const Projects = () => {
       liveLink: 'http://sibilb24.ddns.net/'
     },
     {
-      id: 4,
+      id: 5,
       title: 'E-commerce Windows Application',
       description: 'A windows apps e-commerce platform with payment processing, user authentication, and admin dashboard.',
       technologies: ['C#', 'MySQL'],
@@ -40,7 +49,7 @@ const Projects = () => {
       liveLink: '#'
     },
     {
-      id: 5,
+      id: 6,
       title: 'FiveM (GTA V) Roleplay Server',
       description: 'A server in GTA V game modifier called FiveM, Roleplay Genre.',
       technologies: ['Lua', 'JavaScript', 'HTML5', 'CSS3', 'MySQL'],
@@ -49,7 +58,7 @@ const Projects = () => {
       liveLink: '#'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Portfolio Website',
       description: 'A responsive portfolio website showcasing my projects and skills.',
       technologies: ['React', 'CSS3', 'Framer Motion'],
