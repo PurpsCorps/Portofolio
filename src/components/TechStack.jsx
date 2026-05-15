@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
@@ -8,7 +8,18 @@ import DraggableCard from './ui/DraggableCard';
 import ScrollReveal from './ui/ScrollReveal';
 import { skills } from '../data/portfolio';
 
+const isTouchDevice = () => {
+  if (typeof window === 'undefined') return false;
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+};
+
 export default function TechStack() {
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(isTouchDevice());
+  }, []);
+
   return (
     <section id="skills" className="section">
       <div className="container">
@@ -18,82 +29,70 @@ export default function TechStack() {
           </h2>
         </ScrollReveal>
 
-        {/* 3D Objects Row */}
-        <div className="responsive-grid-2" style={{ gap: 24, marginBottom: 60 }}>
-          <ScrollReveal direction="left">
-            <div className="glass-panel" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: 280 }}>
-                <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-                  <Suspense fallback={null}>
-                    <SkillCube />
-                    <OrbitControls enableZoom={false} enablePan={false} />
-                  </Suspense>
-                </Canvas>
+        {/* 3D Objects Row — show only on non-touch devices */}
+        {!isTouch && (
+          <div className="responsive-grid-2 tech-3d-row">
+            <ScrollReveal direction="left">
+              <div className="glass-panel tech-3d-panel">
+                <div className="tech-3d-canvas">
+                  <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                    <Suspense fallback={null}>
+                      <SkillCube />
+                      <OrbitControls enableZoom={false} enablePan={false} />
+                    </Suspense>
+                  </Canvas>
+                </div>
+                <div className="tech-3d-hint">
+                  🖱️ Drag to rotate the cube
+                </div>
               </div>
-              <div style={{
-                padding: '12px 20px', borderTop: '1px solid var(--glass-border)',
-                fontFamily: 'var(--font-code)', fontSize: '0.75rem', color: 'var(--text-secondary)',
-                textAlign: 'center',
-              }}>
-                🖱️ Drag to rotate the cube
-              </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
 
-          <ScrollReveal direction="right">
-            <div className="glass-panel" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: 280 }}>
-                <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-                  <Suspense fallback={null}>
-                    <ParticleMorph />
-                    <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-                  </Suspense>
-                </Canvas>
+            <ScrollReveal direction="right">
+              <div className="glass-panel tech-3d-panel">
+                <div className="tech-3d-canvas">
+                  <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+                    <Suspense fallback={null}>
+                      <ParticleMorph />
+                      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+                    </Suspense>
+                  </Canvas>
+                </div>
+                <div className="tech-3d-hint">
+                  👆 Click to morph shape
+                </div>
               </div>
-              <div style={{
-                padding: '12px 20px', borderTop: '1px solid var(--glass-border)',
-                fontFamily: 'var(--font-code)', fontSize: '0.75rem', color: 'var(--text-secondary)',
-                textAlign: 'center',
-              }}>
-                👆 Click to morph shape
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
+            </ScrollReveal>
+          </div>
+        )}
 
         {/* Draggable skill cards */}
         <ScrollReveal>
-          <p style={{ fontFamily: 'var(--font-code)', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: 20, textAlign: 'center' }}>
-            ✋ Drag the cards around!
+          <p className="tech-drag-hint">
+            {isTouch ? '📱 Tap to explore skills!' : '✋ Drag the cards around!'}
           </p>
         </ScrollReveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: 16 }}>
+        <div className="tech-skills-grid">
           {skills.map((skill, i) => (
             <ScrollReveal key={skill.name} delay={i * 0.03} direction="scale">
               <DraggableCard>
                 <motion.div
-                  className="glass-panel"
-                  style={{
-                    textAlign: 'center', padding: '20px 12px',
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
-                  }}
+                  className="glass-panel tech-skill-card"
                   whileHover={{
                     borderColor: skill.color + '60',
                     boxShadow: `0 0 25px ${skill.color}20`,
                   }}
                 >
                   <skill.icon size={28} color={skill.color} />
-                  <span style={{ fontFamily: 'var(--font-code)', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+                  <span className="tech-skill-name">
                     {skill.name}
                   </span>
                   {/* Skill bar */}
-                  <div style={{
-                    width: '100%', height: 3, background: 'rgba(255,255,255,0.05)',
-                    borderRadius: 2, overflow: 'hidden',
-                  }}>
+                  <div className="tech-skill-bar-bg">
                     <motion.div
-                      style={{ height: '100%', background: skill.color, borderRadius: 2 }}
+                      className="tech-skill-bar-fill"
+                      style={{ background: skill.color }}
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
@@ -106,6 +105,86 @@ export default function TechStack() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .tech-3d-row { gap: 24px; margin-bottom: 60px; }
+        .tech-3d-panel { padding: 0 !important; overflow: hidden; }
+        .tech-3d-canvas { height: 280px; }
+        .tech-3d-hint {
+          padding: 12px 20px;
+          border-top: 1px solid var(--glass-border);
+          font-family: var(--font-code);
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+          text-align: center;
+        }
+        .tech-drag-hint {
+          font-family: var(--font-code);
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+          margin-bottom: 20px;
+          text-align: center;
+        }
+        .tech-skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+          gap: 16px;
+        }
+        .tech-skill-card {
+          text-align: center;
+          padding: 20px 12px !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .tech-skill-name {
+          font-family: var(--font-code);
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+        }
+        .tech-skill-bar-bg {
+          width: 100%;
+          height: 3px;
+          background: rgba(255,255,255,0.05);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+        .tech-skill-bar-fill {
+          height: 100%;
+          border-radius: 2px;
+        }
+
+        @media (max-width: 1024px) {
+          .tech-3d-canvas { height: 240px; }
+          .tech-3d-row { margin-bottom: 48px; }
+        }
+        @media (max-width: 768px) {
+          .tech-3d-canvas { height: 200px; }
+          .tech-3d-row { margin-bottom: 36px; }
+          .tech-3d-hint { font-size: 0.7rem; padding: 10px 16px; }
+          .tech-skills-grid {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+          }
+          .tech-skill-card { padding: 14px 8px !important; gap: 8px; }
+          .tech-skill-card svg { width: 22px; height: 22px; }
+          .tech-skill-name { font-size: 0.65rem; }
+          .tech-drag-hint { font-size: 0.72rem; }
+        }
+        @media (max-width: 480px) {
+          .tech-skills-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+          }
+          .tech-skill-card { padding: 12px 6px !important; gap: 6px; }
+          .tech-skill-card svg { width: 20px; height: 20px; }
+          .tech-skill-name { font-size: 0.6rem; }
+        }
+        @media (max-width: 360px) {
+          .tech-skills-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        }
+      `}</style>
     </section>
   );
 }

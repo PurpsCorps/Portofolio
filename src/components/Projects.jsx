@@ -23,22 +23,21 @@ function ProjectCard({ project, index }) {
 
   return (
     <ScrollReveal delay={index * 0.1}>
-      <div ref={cardRef} className="glass-panel" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
-        data-hover style={{ padding: 0, overflow: 'hidden', transition: 'transform 0.15s ease', position: 'relative', cursor: 'none' }}>
-        <div style={{ position: 'absolute', width: 200, height: 200, background: `radial-gradient(circle, ${project.color}15, transparent 70%)`, left: 'var(--gx,50%)', top: 'var(--gy,50%)', transform: 'translate(-50%,-50%)', pointerEvents: 'none', borderRadius: '50%' }} />
-        <div style={{ height: 3, background: `linear-gradient(90deg, ${project.color}, transparent)` }} />
-        <div style={{ padding: '24px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${project.color}15`, border: `1px solid ${project.color}30` }}>
+      <div ref={cardRef} className="glass-panel project-card" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} data-hover>
+        <div className="project-glow" style={{ background: `radial-gradient(circle, ${project.color}15, transparent 70%)` }} />
+        <div className="project-accent" style={{ background: `linear-gradient(90deg, ${project.color}, transparent)` }} />
+        <div className="project-body">
+          <div className="project-header">
+            <div className="project-icon" style={{ background: `${project.color}15`, border: `1px solid ${project.color}30` }}>
               <project.icon size={20} color={project.color} />
             </div>
-            <h3 style={{ fontFamily: 'var(--font-code)', fontSize: '1.05rem', fontWeight: 600 }}>{project.title}</h3>
+            <h3 className="project-title">{project.title}</h3>
           </div>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.7, marginBottom: 18, minHeight: 72 }}>{project.description}</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 18 }}>
+          <p className="project-desc">{project.description}</p>
+          <div className="project-tags">
             {project.tech.map(t => <span key={t} className="tag" style={{ borderColor: project.color + '30', color: project.color }}>{t}</span>)}
           </div>
-          <div style={{ display: 'flex', gap: 10 }}>
+          <div className="project-links">
             <MagneticButton href={project.link}>Live <FaExternalLinkAlt size={11} /></MagneticButton>
             <MagneticButton className="purple" href={project.github}>Code <FaGithub size={13} /></MagneticButton>
           </div>
@@ -57,10 +56,78 @@ export default function Projects() {
             <span className="prefix">&gt;</span> Projects<span className="underscore">_</span>
           </h2>
         </ScrollReveal>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: 24 }}>
+        <div className="projects-grid">
           {projects.map((p, i) => <ProjectCard key={p.title} project={p} index={i} />)}
         </div>
       </div>
+
+      <style>{`
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+          gap: 24px;
+        }
+        .project-card {
+          padding: 0 !important;
+          overflow: hidden;
+          transition: transform 0.15s ease;
+          position: relative;
+          cursor: none;
+        }
+        .project-glow {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          left: var(--gx, 50%);
+          top: var(--gy, 50%);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          border-radius: 50%;
+        }
+        .project-accent { height: 3px; }
+        .project-body { padding: 24px; position: relative; z-index: 1; }
+        .project-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .project-icon {
+          width: 44px; height: 44px; border-radius: 12px;
+          display: flex; align-items: center; justify-content: center;
+          flex-shrink: 0;
+        }
+        .project-title {
+          font-family: var(--font-code);
+          font-size: 1.05rem;
+          font-weight: 600;
+        }
+        .project-desc {
+          color: var(--text-secondary);
+          font-size: 0.85rem;
+          line-height: 1.7;
+          margin-bottom: 18px;
+          min-height: 72px;
+        }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+        .project-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        @media (max-width: 768px) {
+          .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 18px;
+          }
+          .project-card { cursor: pointer; }
+          .project-body { padding: 18px; }
+          .project-title { font-size: 0.95rem; }
+          .project-desc { font-size: 0.8rem; min-height: auto; margin-bottom: 14px; }
+          .project-icon { width: 38px; height: 38px; border-radius: 10px; }
+          .project-tags { gap: 5px; margin-bottom: 14px; }
+          .project-links { gap: 8px; }
+        }
+        @media (max-width: 480px) {
+          .projects-grid { gap: 14px; }
+          .project-body { padding: 16px; }
+          .project-header { gap: 10px; margin-bottom: 10px; }
+          .project-icon { width: 34px; height: 34px; }
+          .project-desc { font-size: 0.78rem; line-height: 1.6; margin-bottom: 12px; }
+        }
+      `}</style>
     </section>
   );
 }
