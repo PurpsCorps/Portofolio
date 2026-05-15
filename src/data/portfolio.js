@@ -20,7 +20,7 @@ export const personalInfo = {
   location: "Palembang, Indonesia",
   email: "fahrirmdhn171006@gmail.com",
   github: "https://github.com/PurpsCorps",
-  linkedin: "https://linkedin.com/in/m-fahri-ramadhan-088827261",
+  linkedin: "https://linkedin.com/in/m-fahri-ramadhan",
   twitter: "https://x.com/pahriirm",
   instagram: "https://instagram.com/_fahrirm",
 };
@@ -62,7 +62,7 @@ export const projects = [
     tech: ["React", "Laravel", "MySQL", "Tailwind CSS"],
     icon: FaTicketAlt,
     color: "#00f0ff",
-    link: "#",
+    link: "https://sifestunsri.com",
     github: "#",
   },
   {
@@ -71,7 +71,7 @@ export const projects = [
     tech: ["Laravel", "Tailwind CSS", "MySQL", "Filament"],
     icon: FaTicketAlt,
     color: "#a855f7",
-    link: "#",
+    link: "https://hilosarcopenia.my.id",
     github: "#",
   },
   {
@@ -80,7 +80,7 @@ export const projects = [
     tech: ["React", "Laravel", "Tailwind CSS", "MySQL"],
     icon: FaServer,
     color: "#00ff88",
-    link: "#",
+    link: "https://vector-hosting.com",
     github: "#",
   },
   {
@@ -114,7 +114,7 @@ export const projects = [
 
 export const socialLinks = [
   { name: "GitHub", icon: FaGithub, url: "https://github.com/PurpsCorps", color: "#ffffff" },
-  { name: "LinkedIn", icon: FaLinkedin, url: "https://linkedin.com/in/m-fahri-ramadhan-088827261", color: "#0077b5" },
+  { name: "LinkedIn", icon: FaLinkedin, url: "https://linkedin.com/in/m-fahri-ramadhan", color: "#0077b5" },
   { name: "Twitter", icon: FaTwitter, url: "https://x.com/pahriirm", color: "#1da1f2" },
   { name: "Instagram", icon: FaInstagram, url: "https://instagram.com/_fahrirm", color: "#e4405f" },
 ];

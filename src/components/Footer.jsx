@@ -9,7 +9,7 @@ export default function Footer() {
             &lt;fahri<span>/&gt;</span>
           </a>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginTop: 8, fontFamily: 'var(--font-code)' }}>
-            © 2025 {personalInfo.name}. All rights reserved.
+            © 2026 {personalInfo.name}. All rights reserved.
           </p>
         </div>
         <div style={{ display: 'flex', gap: 16 }}>
