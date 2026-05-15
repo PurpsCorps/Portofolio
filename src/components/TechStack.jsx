@@ -164,7 +164,7 @@ export default function TechStack() {
           .tech-3d-row { margin-bottom: 36px; }
           .tech-3d-hint { font-size: 0.7rem; padding: 10px 16px; }
           .tech-skills-grid {
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
           }
           .tech-skill-card { padding: 14px 8px !important; gap: 8px; }
@@ -172,7 +172,7 @@ export default function TechStack() {
           .tech-skill-name { font-size: 0.65rem; }
           .tech-drag-hint { font-size: 0.72rem; }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
           .tech-skills-grid {
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
