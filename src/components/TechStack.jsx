@@ -181,8 +181,14 @@ export default function TechStack() {
           .tech-skill-card svg { width: 20px; height: 20px; }
           .tech-skill-name { font-size: 0.6rem; }
         }
-        @media (max-width: 360px) {
-          .tech-skills-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        @media (max-width: 400px) {
+          .tech-skills-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+          }
+          .tech-skill-card { padding: 14px 10px !important; gap: 8px; }
+          .tech-skill-card svg { width: 24px; height: 24px; }
+          .tech-skill-name { font-size: 0.68rem; }
         }
       `}</style>
     </section>
